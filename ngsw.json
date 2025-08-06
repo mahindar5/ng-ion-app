@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1754453097446,
+  "timestamp": 1754453202143,
   "index": "/ng-ion-app/index.html",
   "assetGroups": [
     {
@@ -53,7 +53,7 @@
         "/ng-ion-app/chunk-XZ35YGDL.js",
         "/ng-ion-app/favicon.ico",
         "/ng-ion-app/index.html",
-        "/ng-ion-app/main-QSCRIWQL.js",
+        "/ng-ion-app/main-JTPQSX3U.js",
         "/ng-ion-app/manifest.webmanifest",
         "/ng-ion-app/styles-R7PI2BBQ.css"
       ],
@@ -130,8 +130,8 @@
     "/ng-ion-app/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/ng-ion-app/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/ng-ion-app/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/ng-ion-app/index.html": "9704e0a6cf5fb3d4891c41146a6457888964cdb2",
-    "/ng-ion-app/main-QSCRIWQL.js": "709f4bb85a0c2d1cb77892a3c3ba5d556dff1252",
+    "/ng-ion-app/index.html": "7b0f3cde91daefc5062f9ae6c826935c2fcc2192",
+    "/ng-ion-app/main-JTPQSX3U.js": "9c3e6d0d0e6659f65d5b62d91cb316e499445897",
     "/ng-ion-app/manifest.webmanifest": "ead03a7b1cc45715e94a3c9c5875ad7bde038636",
     "/ng-ion-app/styles-R7PI2BBQ.css": "2d7e0ab07a251e65ba3a4c86195aa80c4a90a4ad"
   },
