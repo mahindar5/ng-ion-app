@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1754725899223,
+  "timestamp": 1754728644401,
   "index": "/ng-ion-app/index.html",
   "assetGroups": [
     {
@@ -55,7 +55,7 @@
         "/ng-ion-app/chunk-YGNCXPY2.js",
         "/ng-ion-app/favicon.ico",
         "/ng-ion-app/index.html",
-        "/ng-ion-app/main-VACQYGD6.js",
+        "/ng-ion-app/main-FZB7LLRV.js",
         "/ng-ion-app/manifest.webmanifest",
         "/ng-ion-app/styles-6ZEMNBBA.css"
       ],
@@ -134,8 +134,8 @@
     "/ng-ion-app/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/ng-ion-app/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/ng-ion-app/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/ng-ion-app/index.html": "6c3f55e90c2f288d53e21d3f1d97f7b647598761",
-    "/ng-ion-app/main-VACQYGD6.js": "bfa04395ff47dfd076adfffb93bb005638d76456",
+    "/ng-ion-app/index.html": "56c152b40c7ebc96bdb47d1c491a8da15c0789a8",
+    "/ng-ion-app/main-FZB7LLRV.js": "81b139851d9de46501edaa1ed3c943dafa551eca",
     "/ng-ion-app/manifest.webmanifest": "ec52c93f78a7ac21a78f692a72aaa0ca391196b9",
     "/ng-ion-app/styles-6ZEMNBBA.css": "7829d97fc95561bbcc38adf730ba932b49533e59"
   },
