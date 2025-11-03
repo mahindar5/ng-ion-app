@@ -1,0 +1,18 @@
+name: ng-ion-app-npmpackage-ghpages-dispatch
+
+on:
+  # push:
+  #   branches: [ main ]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [ng-ion-app-updated]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: read
+
+jobs:
+  ng-ion-app-npmpackage-ghpages:
+    uses: ./.github/workflows/_npmpackage-ghpages.yml

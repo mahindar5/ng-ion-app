@@ -1,0 +1,67 @@
+name: _ghrelease-ghpages
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        required: false
+        type: string
+    secrets:
+      SOURCE_REPO_PAT:
+        required: true
+
+jobs:
+  deploy-ghrelease-to-ghpages:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download release
+        env:
+          GH_TOKEN: ${{ secrets.SOURCE_REPO_PAT }}
+        run: |
+          TAG="${{ github.event.client_payload.tag || inputs.tag || '' }}"
+          
+          # Debug: Check if we can access the repository
+          echo "Testing repository access..."
+          if ! gh repo view "mahindar5/ng-app" > /dev/null 2>&1; then
+            echo "Error: Cannot access repository mahindar5/ng-app"
+            echo "Check if SOURCE_REPO_PAT token has proper permissions"
+            exit 1
+          fi
+          
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          
+          if [ -z "$TAG" ]; then
+            echo "No tag specified, finding latest $REPO_NAME release"
+            TAG=$(gh release list -R "mahindar5/ng-app" --json tagName,name | jq -r "[.[] | select(.name | contains(\"$REPO_NAME\"))] | .[0].tagName")
+            if [ "$TAG" == "null" ] || [ -z "$TAG" ]; then
+              echo "No $REPO_NAME releases found"
+              exit 1
+            fi
+            echo "Found latest tag: $TAG"
+          fi
+          
+          echo "Downloading release: $TAG"
+          gh release download "$TAG" -R "mahindar5/ng-app" -p "$REPO_NAME-*.tar.gz"
+
+      - name: Extract artifacts
+        run: |
+          mkdir -p dist
+          tar -xzf *.tar.gz -C dist
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+          retention-days: 1
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

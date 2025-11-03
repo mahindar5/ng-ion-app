@@ -1,0 +1,49 @@
+name: _npmpackage-ghpages
+
+on:
+  workflow_call:
+concurrency:
+  group: gh-pages-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-npmpackage-to-ghpages:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Configure npm for installing packages
+        run: |
+          echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
+
+      - name: Install package and prepare for deployment
+        run: |
+          npm install @${{ github.repository }}@latest
+          mkdir -p pages-content
+          cp -r node_modules/@${{ github.repository }}/browser/* pages-content/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-content
+          retention-days: 1
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
