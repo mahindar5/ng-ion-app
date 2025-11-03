@@ -46,7 +46,7 @@ jobs:
           fi
           
           echo "Downloading release: $TAG"
-          gh release download "$TAG" -R "mahindar5/ng-app" -p "$REPO_NAME-*.tar.gz"
+          gh release download "$TAG" -R "mahindar5/ng-app" -p "*-$REPO_NAME.tar.gz"
 
       - name: Extract artifacts
         run: |
